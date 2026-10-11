@@ -1,76 +1,653 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Portfolio | Faran Haider</title>
+<meta name="theme-color" content="#080b16">
+<meta name="description" content="Explore the portfolio, AI projects, skills, and learning journey of an aspiring AI engineer.">
+<title>Faran Haider | AI Engineer Portfolio</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#080d1b;color:#f5f7ff;line-height:1.7}
-header{padding:22px 8%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #252d45;position:sticky;top:0;background:#080d1bf2}
-.logo{font-size:23px;font-weight:bold;color:#9b8aff}
-nav a{color:white;text-decoration:none;margin-left:18px;font-size:14px}
-.hero{min-height:78vh;padding:100px 10%;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(ellipse at 80% 30%,#35216a66,transparent 45%)}
-.tag{color:#a99bff;letter-spacing:3px;font-size:13px}
-h1{font-size:clamp(38px,7vw,70px);line-height:1.15;margin:20px 0}
-h1 span{color:#9b8aff}
-.hero p{max-width:620px;color:#c0c8dc;font-size:18px}
-.btn{display:inline-block;margin-top:25px;padding:12px 24px;background:#7959ed;color:white;text-decoration:none;border-radius:8px;font-weight:bold}
-section{padding:75px 10%}
-h2{font-size:32px;margin-bottom:24px}
-.muted{color:#b4bfd4}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.card{padding:25px;border:1px solid #303957;border-radius:14px;background:#11182a;transition:.3s}
-.card:hover{transform:translateY(-5px);border-color:#9b8aff}
-.card h3{color:#b2a5ff;margin-bottom:10px}
-.skills{display:flex;flex-wrap:wrap;gap:12px}
-.skills span{padding:9px 16px;background:#171f35;border:1px solid #394363;border-radius:30px}
-footer{text-align:center;padding:30px;color:#aeb8cc;border-top:1px solid #252d45}
-a{transition:.2s}
-@media(max-width:600px){header{padding:16px 5%;flex-direction:column;gap:10px}nav a{margin:0 7px}.hero{padding:75px 7%}section{padding:55px 7%}}
+:root {
+  --bg: #080b16;
+  --panel: #101629;
+  --text: #f4f7ff;
+  --muted: #a1abc3;
+  --blue: #61a5ff;
+  --purple: #ad82ff;
+  --border: rgba(255,255,255,.10);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.container { width: min(1100px, 90%); margin: auto; }
+section { padding: 90px 0; scroll-margin-top: 75px; }
+.section-title { text-align: center; margin-bottom: 42px; }
+.section-title h2 { font-size: clamp(28px, 4vw, 40px); }
+.section-title p { color: var(--muted); margin-top: 8px; }
+.gradient {
+  background: linear-gradient(100deg, var(--blue), var(--purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(8,11,22,.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.logo { font-size: 21px; font-weight: 800; }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a { color: var(--muted); font-size: 14px; }
+.nav-links a:hover { color: var(--blue); }
+.menu-btn {
+  display: none;
+  color: white;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 80% 35%, rgba(99,102,241,.14), transparent 45%),
+    radial-gradient(ellipse at 15% 70%, rgba(14,165,233,.10), transparent 40%);
+}
+#network {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; max-width: 760px; }
+.eyebrow {
+  display: inline-block;
+  border: 1px solid rgba(97,165,255,.35);
+  background: rgba(97,165,255,.08);
+  color: #a9d0ff;
+  border-radius: 30px;
+  padding: 7px 14px;
+  font-size: 13px;
+  margin-bottom: 23px;
+}
+.hero h1 {
+  font-size: clamp(39px, 7vw, 72px);
+  line-height: 1.12;
+  letter-spacing: -2px;
+}
+.hero h1 span { display: block; }
+.hero p {
+  max-width: 620px;
+  color: var(--muted);
+  font-size: 17px;
+  margin: 22px 0 30px;
+}
+.actions { display: flex; flex-wrap: wrap; gap: 13px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 21px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  transition: transform .25s, box-shadow .25s;
+}
+.btn:hover { transform: translateY(-3px); }
+.btn-primary {
+  background: linear-gradient(110deg, #438fff, #9264f5);
+  color: white;
+  border: none;
+  box-shadow: 0 8px 30px rgba(89,117,255,.18);
+}
+.btn-secondary { background: rgba(255,255,255,.04); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 28px;
+  align-items: stretch;
+}
+.card {
+  background: linear-gradient(145deg, rgba(19,27,48,.92), rgba(12,17,32,.95));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 27px;
+  transition: transform .25s, border-color .25s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(97,165,255,.45);
+}
+.card h3 { margin-bottom: 12px; font-size: 19px; }
+.card p { color: var(--muted); }
+.focus-list { display: grid; gap: 15px; }
+.focus-item { display: flex; gap: 13px; align-items: flex-start; }
+.focus-icon { font-size: 23px; }
+.focus-item p { font-size: 14px; }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.skill-card h3 { color: #c6d9ff; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
+.tag {
+  padding: 6px 10px;
+  font-size: 12px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: rgba(255,255,255,.035);
+  color: #d5dced;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.project-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.project-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  font-size: 25px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #1d3d70, #39265f);
+}
+.project-number { color: #71809e; font-size: 13px; }
+.project-links { display: flex; gap: 17px; margin-top: 20px; }
+.project-links a { color: #9fc8ff; font-size: 13px; }
+.project-links a:hover { text-decoration: underline; }
+.timeline { max-width: 750px; margin: auto; }
+.timeline .card { margin-bottom: 17px; }
+.timeline small { color: var(--blue); }
+.contact-card { text-align: center; max-width: 750px; margin: auto; }
+.contact-card p { max-width: 570px; margin: 12px auto 25px; }
+.contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+footer {
+  border-top: 1px solid var(--border);
+  padding: 25px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+#top-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 8;
+  display: none;
+  width: 43px;
+  height: 43px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+  color: white;
+  font-size: 21px;
+  cursor: pointer;
+}
+@media (max-width: 760px) {
+  .menu-btn { display: block; }
+  .nav { flex-wrap: wrap; padding: 13px 0; }
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 10px 0; width: 100%; }
+  section { padding: 65px 0; }
+  .hero { min-height: 78vh; }
+  .hero h1 { letter-spacing: -1px; }
+  .about-grid, .skills-grid, .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .card { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
 </style>
 </head>
+
 <body>
 <header>
-<div class="logo">FH. / AI</div>
-<nav>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</nav>
+  <div class="container nav">
+    <a class="logo" href="#home">FH<span class="gradient">.</span></a>
+    <button class="menu-btn" id="menu-btn" aria-label="Open navigation"
+      aria-expanded="false" aria-controls="nav-links">☰ Menu</button>
+    <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
+
 <main>
-<div class="hero">
-<div class="tag">ARTIFICIAL INTELLIGENCE • INNOVATION</div>
-<h1>Hi, I'm Faran<br><span>AI Student & Developer</span></h1>
-<p>I am a BS Artificial Intelligence student passionate about building intelligent solutions, exploring AI agents, and using technology to solve real-world problems.</p>
-<a class="btn" href="#projects">Explore My Work →</a>
-</div>
+<section class="hero" id="home">
+  <canvas id="network" aria-hidden="true"></canvas>
+  <div class="container hero-content reveal">
+    <span class="eyebrow">✦ AI Student · Future AI Engineer</span>
+    <h1>Building Intelligent<br>
+      <span class="gradient">Solutions for the Real World.</span>
+    </h1>
+    <p>
+      Hello, I'm Faran Haider. I'm an Artificial Intelligence student
+      passionate about AI, software development, and creating technology
+      that solves meaningful real-world problems.
+    </p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#projects">Explore My Projects ↗</a>
+      <a class="btn btn-secondary" href="#contact">Let's Connect</a>
+    </div>
+  </div>
+</section>
+
 <section id="about">
-<h2>About Me</h2>
-<p class="muted">I am learning Artificial Intelligence and software development, with an interest in Python, intelligent systems, and practical projects that create value for society. My goal is to grow into an AI engineer and entrepreneur.</p>
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>About <span class="gradient">Me</span></h2>
+      <p>Curiosity, continuous learning, and technology with purpose.</p>
+    </div>
+    <div class="about-grid">
+      <article class="card reveal">
+        <h3>My Journey</h3>
+        <p>
+          I'm an AI student building my foundations in programming,
+          intelligent systems, and modern software development. I enjoy
+          exploring how AI can help people, improve everyday processes,
+          and create new opportunities.
+        </p>
+        <p style="margin-top:14px">
+          My goal is to keep learning, build practical projects, and grow
+          into an AI engineer and entrepreneur who creates useful solutions.
+        </p>
+      </article>
+      <article class="card reveal">
+        <h3>What I'm Focused On</h3>
+        <div class="focus-list">
+          <div class="focus-item">
+            <span class="focus-icon">🧠</span>
+            <div><strong>Artificial Intelligence</strong>
+              <p>Exploring AI concepts and intelligent applications.</p></div>
+          </div>
+          <div class="focus-item">
+            <span class="focus-icon">💻</span>
+            <div><strong>Software Development</strong>
+              <p>Learning to build reliable, practical software.</p></div>
+          </div>
+          <div class="focus-item">
+            <span class="focus-icon">🚀</span>
+            <div><strong>Problem Solving</strong>
+              <p>Turning ideas into useful projects through practice.</p></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
+
 <section id="skills">
-<h2>My Skills</h2>
-<div class="skills">
-<span>Python</span><span>Artificial Intelligence</span><span>AI Agents</span><span>Machine Learning</span><span>C++</span><span>Problem Solving</span><span>Web Development</span>
-</div>
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>My <span class="gradient">Skills</span></h2>
+      <p>Technologies and topics I'm learning and exploring.</p>
+    </div>
+    <div class="skills-grid">
+      <article class="card skill-card reveal">
+        <h3>⌨ Programming</h3>
+        <p>Languages and web fundamentals.</p>
+        <div class="tags">
+          <span class="tag">C++</span>
+          <span class="tag">Python</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </article>
+      <article class="card skill-card reveal">
+        <h3>✧ AI & Intelligent Systems</h3>
+        <p>Areas I'm studying and exploring.</p>
+        <div class="tags">
+          <span class="tag">AI Fundamentals</span>
+          <span class="tag">Prompt Engineering</span>
+          <span class="tag">AI Agents</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Generative AI</span>
+        </div>
+      </article>
+      <article class="card skill-card reveal">
+        <h3>⚙ Tools & Workflow</h3>
+        <p>Tools for learning and building projects.</p>
+        <div class="tags">
+          <span class="tag">GitHub</span>
+          <span class="tag">Google Colab</span>
+          <span class="tag">VS Code</span>
+          <span class="tag">Git</span>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
+
 <section id="projects">
-<h2>Featured Projects</h2>
-<div class="cards">
-<div class="card"><h3>AI Agent</h3><p class="muted">An intelligent assistant concept designed to help users with everyday tasks.</p></div>
-<div class="card"><h3>Smart Bus Tracking</h3><p class="muted">A student-focused concept for checking bus locations and routes.</p></div>
-<div class="card"><h3>AI Chatbot</h3><p class="muted">A chatbot concept for answering questions and providing useful information.</p></div>
-</div>
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>Featured <span class="gradient">Projects</span></h2>
+      <p>A space to showcase practical work and experiments.</p>
+    </div>
+    <div class="projects-grid">
+      <article class="card reveal">
+        <div class="project-top">
+          <div class="project-icon">🤖</div>
+          <span class="project-number">PROJECT 01</span>
+        </div>
+        <h3>AI Assistant / Chatbot</h3>
+        <p>
+          An AI assistant concept designed to answer questions and help
+          users complete useful tasks.
+        </p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">AI</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/faranhaider12" target="_blank"
+             rel="noopener noreferrer">My GitHub ↗</a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="project-top">
+          <div class="project-icon">🚌</div>
+          <span class="project-number">PROJECT 02</span>
+        </div>
+        <h3>Student Bus Tracking System</h3>
+        <p>
+          A proposed system to help students check bus routes and location
+          updates. GPS integration can be added during development.
+        </p>
+        <div class="tags">
+          <span class="tag">Software Design</span>
+          <span class="tag">GPS Concept</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/faranhaider12" target="_blank"
+             rel="noopener noreferrer">My GitHub ↗</a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="project-top">
+          <div class="project-icon">🌐</div>
+          <span class="project-number">PROJECT 03</span>
+        </div>
+        <h3>Personal Portfolio Website</h3>
+        <p>
+          A responsive personal website to present my learning journey,
+          interests, and future projects.
+        </p>
+        <div class="tags">
+          <span class="tag">HTML</span><span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/faranhaider12/faranh12.github.io"
+             target="_blank" rel="noopener noreferrer">Source Code ↗</a>
+          <a href="https://faranh12.github.io" target="_blank"
+             rel="noopener noreferrer">Live Website ↗</a>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="project-top">
+          <div class="project-icon">💡</div>
+          <span class="project-number">PROJECT 04</span>
+        </div>
+        <h3>Your Next Project</h3>
+        <p>
+          Replace this card with a project you have built. Explain the
+          problem, your solution, and the technologies you used.
+        </p>
+        <div class="tags">
+          <span class="tag">Add Your Technologies</span>
+        </div>
+        <div class="project-links">
+          <a href="#contact">Ask About My Work ↗</a>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
+
+<section id="education">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>Education & <span class="gradient">Growth</span></h2>
+      <p>Building a strong foundation for the future.</p>
+    </div>
+    <div class="timeline">
+      <article class="card reveal">
+        <small>EDUCATION</small>
+        <h3>Bachelor's Student in Artificial Intelligence</h3>
+        <p>
+          Studying AI concepts, programming, problem solving, and
+          computing fundamentals.
+        </p>
+        <p style="margin-top:10px">
+          Add your university name, expected graduation year, and relevant
+          coursework here.
+        </p>
+      </article>
+      <article class="card reveal">
+        <small>CONTINUOUS LEARNING</small>
+        <h3>Learning by Building</h3>
+        <p>
+          Developing practical programming skills, exploring AI tools,
+          and turning concepts into projects.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section id="contact">
-<h2>Let's Connect</h2>
-<p class="muted">Interested in AI, collaboration, or building useful technology? Connect with me.</p>
-<a class="btn" href="https://github.com/faranhaider12">My GitHub</a>
-<a class="btn" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+  <div class="container">
+    <div class="card contact-card reveal">
+      <span class="eyebrow">Have an idea? Let's connect.</span>
+      <h2 style="font-size:clamp(30px,5vw,44px)">
+        Let's Build Something <span class="gradient">Meaningful</span>
+      </h2>
+      <p>
+        I'm interested in AI, technology, learning opportunities,
+        and projects that solve real-world problems.
+        Feel free to connect with me.
+      </p>
+      <div class="contact-links">
+        <!-- Replace the placeholder email below with your real email. -->
+        <a class="btn btn-primary"
+           href="mailto:YOUR_EMAIL@example.com">✉ Email Me</a>
+        <!-- Replace these URLs with your actual profile URLs. -->
+        <a class="btn btn-secondary"
+           href="https://www.linkedin.com/" target="_blank"
+           rel="noopener noreferrer">LinkedIn ↗</a>
+        <a class="btn btn-secondary"
+           href="https://github.com/faranhaider12" target="_blank"
+           rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
 </section>
 </main>
-<footer>© 2026 Faran Haider | AI Portfolio</footer>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> Faran Haider · Built with curiosity and code.</p>
+  </div>
+</footer>
+
+<button id="top-btn" aria-label="Back to top">↑</button>
+
+<script>
+const menuBtn = document.getElementById("menu-btn");
+const navLinks = document.getElementById("nav-links");
+
+menuBtn.addEventListener("click", () => {
+  const open = navLinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", String(open));
+  menuBtn.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const topBtn = document.getElementById("top-btn");
+window.addEventListener("scroll", () => {
+  topBtn.style.display = window.scrollY > 400 ? "block" : "none";
+});
+topBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+/* Animated neural-network background */
+const canvas = document.getElementById("network");
+const ctx = canvas.getContext("2d");
+let particles = [];
+let width = 0;
+let height = 0;
+let animationFrame;
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function resizeCanvas() {
+  const rect = canvas.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  width = rect.width;
+  height = rect.height;
+  canvas.width = width * dpr;
+  canvas.height = height * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const count = Math.min(75, Math.max(25, Math.floor(width / 16)));
+  particles = Array.from({ length: count }, () => ({
+    x: Math.random() * width,
+    y: Math.random() * height,
+    vx: (Math.random() - 0.5) * 0.35,
+    vy: (Math.random() - 0.5) * 0.35,
+    r: Math.random() * 1.8 + 0.7
+  }));
+}
+
+function drawNetwork() {
+  ctx.clearRect(0, 0, width, height);
+
+  particles.forEach((p, i) => {
+    if (!reducedMotion) {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > width) p.vx *= -1;
+      if (p.y < 0 || p.y > height) p.vy *= -1;
+    }
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(112,165,255,0.75)";
+    ctx.fill();
+
+    for (let j = i + 1; j < particles.length; j++) {
+      const q = particles[j];
+      const dx = p.x - q.x;
+      const dy = p.y - q.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < 115) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(q.x, q.y);
+        ctx.strokeStyle = `rgba(104,139,255,${0.16 * (1 - distance / 115)})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+  });
+
+  if (!reducedMotion) {
+    animationFrame = requestAnimationFrame(drawNetwork);
+  }
+}
+
+resizeCanvas();
+drawNetwork();
+
+window.addEventListener("resize", () => {
+  cancelAnimationFrame(animationFrame);
+  resizeCanvas();
+  drawNetwork();
+});
+</script>
 </body>
 </html>
